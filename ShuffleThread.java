@@ -1,5 +1,3 @@
-package abhi.bruteforce;
-
 class ShuffleThread extends HelpingMethods implements Runnable{
     Thread thread;
     private String combination, name;
