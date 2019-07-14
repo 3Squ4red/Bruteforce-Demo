@@ -1,5 +1,3 @@
-package abhi.bruteforce;
-
 import java.util.ArrayList;
 
 class Permutation {
