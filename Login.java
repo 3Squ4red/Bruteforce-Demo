@@ -1,5 +1,3 @@
-package abhi.bruteforce;
-
 import java.util.Scanner;
 
 public class Login extends SignUp{
