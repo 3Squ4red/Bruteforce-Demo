@@ -25,7 +25,7 @@ class ShuffleThread extends HelpingMethods implements Runnable{
             } else  System.exit(0);
         } while (!encrypt(guessedPass).equals(encryptedPass));
         System.out.println("\n" + thread.getName() + " found the password. Say thanks");
-        System.out.println("\nabhi.bruteforce.Password: " + guessedPass);
+        System.out.println("\nPassword: " + guessedPass);
         System.out.println("Iterations: " + itr);
         Bruteforce.passwordFound = true;
     }
