@@ -36,4 +36,3 @@ class Permutation {
         permutedResult.add(pass);
     }
 }
-// i;my;cricket;dog;house;pet;love
