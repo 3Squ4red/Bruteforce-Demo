@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Bruteforce extends HelpingMethods {
     static boolean passwordFound = false;
+    static int seconds;
+    static ShuffleThread[] shuffleThreads;
     private static String passwordHash;
     private static int len;
     private static String guessedPass = "";
@@ -50,11 +52,14 @@ public class Bruteforce extends HelpingMethods {
             System.out.print("\n(NAME: " + name + ")\t(PROVIDED COMBINATION: " + combination + ")");
 
             // Cracking begins
-            ShuffleThread[] shuffleThreads = new ShuffleThread[120];
+            shuffleThreads = new ShuffleThread[120];
             for (int i = 0; i < 120; i++)
                 shuffleThreads[i] = ShuffleThread.createAndStart(i + "#Thread", combination, name);
+            TimerThread timerThread = TimerThread.createAndStart();
+            timerThread.thread.setPriority(Thread.MAX_PRIORITY);
             try {
                 for (ShuffleThread st : shuffleThreads) st.thread.join();
+                timerThread.thread.join();
             } catch (InterruptedException e) {
                 System.out.println("Thread Interrupted");
             }
