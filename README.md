@@ -6,5 +6,5 @@ First run _SignUp.java_ to enter a name and password. All the information will b
 ***NOTE: IF YOU WANT TO CHANGE YOUR PASSWORD, THEN SIMPLY REMOVE THE LINE CONTAINING YOUR INFORMATION FROM _Passwords.txt_ AND THEN SIGN IN AGAIN.***
 
 
-Now, comes the main part. Run _Bruteforce.java_ and follow the instructions that appears on the console. If you find any bug in any file, then simply mail me that bug with a screenshot. Will surely fix it in a day or two. 
+Now, comes the main part. Run _Bruteforce.java_ and follow the instructions that appears on the console. **ONLY WHILE USING** the Jumbled Word Decrypter option for finding the password, the total time elapsed will be shown. If you find any bug in any file, then simply mail me that bug with a screenshot. Will surely fix it in a day or two. 
 **HAVE FUN!**
