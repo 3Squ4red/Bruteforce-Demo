@@ -27,6 +27,7 @@ class ShuffleThread extends HelpingMethods implements Runnable{
         System.out.println("\n" + thread.getName() + " found the password. Say thanks");
         System.out.println("\nPassword: " + guessedPass);
         System.out.println("Iterations: " + itr);
+        System.out.println("Time elapsed: " + Bruteforce.seconds + " seconds");
         Bruteforce.passwordFound = true;
     }
     static String shuffle(String str ) {
