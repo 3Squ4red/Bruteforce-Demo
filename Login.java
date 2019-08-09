@@ -16,15 +16,13 @@ public class Login extends SignUp{
         System.out.print("Enter your password: ");
         pass = input.next();
         do {
-            if (!validPassword(pass)) {
-                System.out.print("Enter a valid password: ");
+            if (!encrypt(pass).equals(getEncryptedPass(name))) {
+                System.out.print("Try again 😡: ");
                 pass = input.next();
             }
-        } while (!validPassword(pass));
+        } while (!encrypt(pass).equals(getEncryptedPass(name)));
+        System.out.println("LOGIN SUCCESSFUL!");
         input.close();
         // Done inputting
-
-        if (encrypt(pass).equals(getEncryptedPass(name))) System.out.println("LOGIN SUCCESSFUL!");
-        else System.out.println("WRONG PASSWORD");
     }
 }
