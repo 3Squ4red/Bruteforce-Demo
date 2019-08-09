@@ -1,5 +1,3 @@
-package abhi.bruteforce;
-
 class TimerThread implements Runnable {
     Thread thread;
     private TimerThread() {
