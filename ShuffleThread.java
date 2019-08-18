@@ -1,4 +1,7 @@
-class ShuffleThread extends HelpingMethods implements Runnable{
+import java.io.FileWriter;
+import java.io.IOException;
+
+class ShuffleThread extends HelpingMethods implements Runnable {
     Thread thread;
     private String combination, name;
 
@@ -17,24 +20,29 @@ class ShuffleThread extends HelpingMethods implements Runnable{
     @Override
     public void run() {
         String encryptedPass = getEncryptedPass(name);
-        String guessedPass = ""; int itr = 0;
+        String guessedPass;
         do {
             if (!Bruteforce.passwordFound) {
-                itr++;
+                Bruteforce.possiblePasswords++;
                 guessedPass = shuffle(combination);
-            } else  System.exit(0);
+                if (!encrypt(guessedPass).equals(encryptedPass))
+                    Bruteforce.lastPassword = guessedPass;
+            } else return;
         } while (!encrypt(guessedPass).equals(encryptedPass));
+        Bruteforce.passwordFound = true;
         System.out.println("\n" + thread.getName() + " found the password. Say thanks");
         System.out.println("\nPassword: " + guessedPass);
-        System.out.println("Iterations: " + itr);
-        System.out.println("Time elapsed: " + Bruteforce.seconds + " seconds");
-        Bruteforce.passwordFound = true;
+        System.out.println("Time elapsed: " + Bruteforce.seconds + " second(s)");
+        System.out.println("Tried passwords: " + Bruteforce.possiblePasswords);
+        System.out.println("Last tried password: " + Bruteforce.lastPassword);
+        System.exit(0);
     }
-    static String shuffle(String str ) {
+
+    static String shuffle(String str) {
         char[] chars = str.toCharArray();
 
-        for (int i = 0; i < chars.length;i++) {
-            int j = (int) (Math.random()*chars.length);
+        for (int i = 0; i < chars.length; i++) {
+            int j = (int) (Math.random() * chars.length);
             char temp = chars[i];
             chars[i] = chars[j];
             chars[j] = temp;
