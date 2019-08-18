@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Bruteforce extends HelpingMethods {
     static boolean passwordFound = false;
-    static int seconds;
-    static ShuffleThread[] shuffleThreads;
+    static long seconds, possiblePasswords;
+    static String lastPassword;
+    private static ShuffleThread[] shuffleThreads;
     private static String passwordHash;
     private static int len;
     private static String guessedPass = "";
@@ -81,7 +83,8 @@ public class Bruteforce extends HelpingMethods {
             //System.out.println("\nPermutated result: " + abhi.bruteforce.Permutation.permutedResult);
             for (int i = 0; i < Permutation.permutedResult.size(); i++) {
                 String[] set = Permutation.permutedResult.get(i).split(";");
-                //System.out.println(Arrays.toString(set));
+                // UNCOMMENT THIS TO SEE ALL THE GENERATED COMBINATION OF PASSWORDS
+                // System.out.println(Arrays.toString(set));
                 loop(set, 0);
                 guessedPass = "";
             }
@@ -95,10 +98,16 @@ public class Bruteforce extends HelpingMethods {
             guessedPass += words[index];
             if (encrypt(guessedPass).equals(passwordHash)) {
                 System.out.println("\nPassword: " + guessedPass);
+                System.out.println("Possible passwords found so far: " + possiblePasswords);
+                System.out.println("Last tried password: " + lastPassword);
                 System.exit(0);
             } else if (guessedPass.length() < len) {
                 index++;
                 loop(words, index);
+            }
+            if (guessedPass.length() == len) {
+                lastPassword = guessedPass;
+                possiblePasswords++;
             }
         }
     }
